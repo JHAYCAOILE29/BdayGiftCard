@@ -157,7 +157,10 @@
       background: #fffdf9;
       box-shadow: 0 5px 16px #68475d19;
       color: #655366;
-      transition: transform 800ms cubic-bezier(.2, .75, .25, 1), height 800ms ease;
+      overflow: hidden;
+      transform: scale(0.72);
+      transform-origin: top center;
+      transition: transform 800ms cubic-bezier(.2, .75, .25, 1);
     }
 
     .envelope-label {
@@ -240,8 +243,8 @@
     .is-open .letter {
       z-index: 5;
       height: 320px;
-      overflow-y: auto;
-      transform: translateY(-175px);
+      overflow: auto;
+      transform: translateY(-175px) scale(1);
     }
 
     .is-open .envelope-label {
@@ -430,13 +433,9 @@
         padding: 17px 18px;
       }
 
-      .letter p {
-        font-size: 0.82rem;
-      }
-
       .is-open .letter {
         height: 310px;
-        transform: translateY(-165px);
+        transform: translateY(-165px) scale(1);
       }
 
       .seal {
