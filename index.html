@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8dce8">
+  <title>Happy Birthday, Chinii!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="confetti" aria-hidden="true"></div>
+  <div class="background-mascots" aria-hidden="true">
+    <img class="background-mascot background-mascot-melody" src="asset/Melody.png" alt="">
+    <img class="background-mascot background-mascot-kuromi" src="asset/Kuromi.png" alt="">
+  </div>
+  <main>
+    <p class="eyebrow">A little something for you</p>
+    <h1>Happy Birthday,<br>Chinii!</h1>
+    <p class="intro">To my favorite person and forever bestie ♡</p>
+
+    <div class="card-scene">
+      <span class="sparkle sparkle-one" aria-hidden="true">✦</span>
+      <span class="sparkle sparkle-two" aria-hidden="true">✧</span>
+      <span class="sparkle sparkle-three" aria-hidden="true">✦</span>
+      <button class="birthday-card" type="button" aria-expanded="false" aria-label="Open your birthday card">
+        <span class="card-back" aria-hidden="true"></span>
+        <span class="envelope-label" aria-hidden="true">For my bestie</span>
+        <span class="letter">
+          <span class="letter-content">
+            <h2>Dear Chinii,</h2>
+            <p>Even though we haven't talked as much this year, and our friendship has mostly lived online, I want you to know how much I still appreciate you. We may not have met in person, but I'm really grateful our paths crossed. I hope you have the happiest, greatest birthday ever, filled with all the love and joy you deserve!</p>
+            <p class="signature">Thinking of you on your special day ♡</p>
+          </span>
+        </span>
+        <span class="flap" aria-hidden="true"></span>
+        <span class="envelope-front" aria-hidden="true"></span>
+        <span class="seal" aria-hidden="true">♡</span>
+      </button>
+    </div>
+    <p class="hint"><span aria-hidden="true">↑</span><span class="hint-text">Tap the card to open your letter</span></p>
+  </main>
+  <script>
+    const card = document.querySelector(".birthday-card");
+    const hint = document.querySelector(".hint-text");
+    const confetti = document.querySelector(".confetti");
+    const confettiColors = ["#f48fb1", "#ec6f9e", "#f7b2c8", "#db6b91"];
+
+    card.addEventListener("click", () => {
+      const isOpen = card.classList.toggle("is-open");
+      card.setAttribute("aria-expanded", String(isOpen));
+      card.setAttribute("aria-label", isOpen ? "Close your birthday card" : "Open your birthday card");
+      hint.textContent = isOpen ? "Tap the card to close it" : "Tap the card to open your letter";
+    });
+
+    for (let i = 0; i < 32; i += 1) {
+      const piece = document.createElement("span");
+      piece.className = "confetti-piece";
+      piece.style.left = `${Math.random() * 100}%`;
+      piece.style.setProperty("--drift", `${Math.random() * 140 - 70}px`);
+      piece.style.setProperty("--duration", `${8 + Math.random() * 9}s`);
+      piece.style.setProperty("--delay", `${Math.random() * -17}s`);
+      piece.style.setProperty("--color", confettiColors[i % confettiColors.length]);
+      piece.style.setProperty("--size", `${5 + Math.random() * 5}px`);
+      confetti.append(piece);
+    }
+  </script>
+</body>
+</html>
